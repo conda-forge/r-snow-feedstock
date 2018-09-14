@@ -1,4 +1,4 @@
-{% set version = '0.4-2' %}
+{% set version = "0.4-3" %}
 
 package:
   name: r-snow
@@ -10,7 +10,7 @@ source:
     - https://cran.r-project.org/src/contrib/snow_{{ version }}.tar.gz
     - https://cran.r-project.org/src/contrib/Archive/snow/snow_{{ version }}.tar.gz
 
-  sha256: ee070187aea3607c9ca6235399b3db3e181348692405d038e962e06aefccabd7
+  sha256: 8512537daf334ea2b8074dbb80cf5e959a403a78d68bc1e97664e8a4f64576d8
 
 build:
   number: 0
