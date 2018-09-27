@@ -1,4 +1,6 @@
-{% set version = '0.4-2' %}
+{% set version = '0.4-3' %}
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-snow
@@ -7,39 +9,45 @@ package:
 source:
   fn: snow_{{ version }}.tar.gz
   url:
-    - https://cran.r-project.org/src/contrib/snow_{{ version }}.tar.gz
-    - https://cran.r-project.org/src/contrib/Archive/snow/snow_{{ version }}.tar.gz
-
-  sha256: ee070187aea3607c9ca6235399b3db3e181348692405d038e962e06aefccabd7
+    - {{ cran_mirror }}/src/contrib/snow_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/Archive/snow/snow_{{ version }}.tar.gz
+  sha256: 8512537daf334ea2b8074dbb80cf5e959a403a78d68bc1e97664e8a4f64576d8
 
 build:
+  merge_build_host: True  # [win]
   number: 0
   skip: true  # [win32]
-
   rpaths:
     - lib/R/lib/
     - lib/
 
 requirements:
   build:
+    - {{posix}}zip               # [win]
+  host:
     - r-base
-
   run:
     - r-base
 
 test:
   commands:
-    # You can put additional test commands to be run here.
-    - $R -e "library('snow')"  # [not win]
+    - $R -e "library('snow')"           # [not win]
     - "\"%R%\" -e \"library('snow')\""  # [win]
 
 about:
-  home: https://cran.r-project.org/web/packages/snow/index.html
-  license: GPL-2
+  home: https://CRAN.R-project.org/package=snow
+  license: GPL
   summary: Support for simple parallel computing in R.
+  license_family: GPL
+  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'  # [unix]
+  license_file: '{{ environ["PREFIX"] }}\R\share\licenses\GPL-3'  # [win]
 
 extra:
   recipe-maintainers:
     - tomnl
     - johanneskoester
     - bgruening
+    - daler
+    - jdblischak
+    - cbrueffer
+    - dbast
