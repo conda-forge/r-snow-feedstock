@@ -1,4 +1,4 @@
-{% set version = '0.4-3' %}
+{% set version = "0.4-4" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -11,12 +11,12 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/snow_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/snow/snow_{{ version }}.tar.gz
-  sha256: 8512537daf334ea2b8074dbb80cf5e959a403a78d68bc1e97664e8a4f64576d8
+  sha256: 84587f46f222a96f3e2fde10ad6ec6ddbd878f4e917cd926d632f61a87db13c9
 
 build:
   noarch: generic
-  merge_build_host: True  # [win]
-  number: 1002
+  merge_build_host: true  # [win]
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
@@ -39,7 +39,7 @@ about:
   license: GPL
   summary: Support for simple parallel computing in R.
   license_family: GPL
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
+  license_file: {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3
 
 extra:
   recipe-maintainers:
