@@ -1,11 +1,11 @@
-About r-snow
-============
+About r-snow-feedstock
+======================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-snow-feedstock/blob/main/LICENSE.txt)
 
 Home: https://CRAN.R-project.org/package=snow
 
 Package license: GPL-2.0-or-later
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-snow-feedstock/blob/main/LICENSE.txt)
 
 Summary: Support for simple parallel computing in R.
 
